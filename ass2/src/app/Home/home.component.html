@@ -1,0 +1,40 @@
+<div class="panel panel-primary">
+        <div class="panel-heading">
+          Home
+        </div>
+        <div class="panel-body">
+           <div class="row">
+               <div class="col-md-2">
+                   Filter By Date: 
+               </div>
+               <div class="col-md-6">
+                 <input type="text" name="UserInput" id="UserInput" [(ngModel)]="filteredText"/>
+                 {{filteredText}}
+               </div>
+               <div class="row">
+                   <div class="col-md-6"><br><br>
+                 <div class="table-responsive">
+                   <table class="table">
+                       <thead>
+                           <tr>
+                             <th>Name</th>
+                             <th>Author</th>
+                             <th>Price</th>
+                             <th>Relaese Date</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                         <tr *ngFor="let content of home | mydate:filteredText" >
+                          <td>{{content.name}}</td>
+                          <td>{{content.author}}</td>
+                          <td>{{content.price | currency}}</td>
+                          <td>{{content.release_date | date :'dd/MM/yy' }}</td>
+                         </tr>
+                       </tbody>
+                 </table>
+               </div>
+             </div>
+           </div>
+           </div>
+        </div>
+     </div>

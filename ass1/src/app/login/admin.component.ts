@@ -14,7 +14,18 @@ export class AdminComponent {
         }
         else{
             this.data.Name=value;
+        
         }  
+    }
+
+    getUsernamedetails():any{
+        return this.data.Name;
+    }
+    getUseremail():any{
+        return this.data.Email;
+    }
+    getUserCellphone():number{
+        return this.data.cellnumber;
     }
 
     formSubmit(form:NgForm):void{

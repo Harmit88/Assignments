@@ -1,0 +1,35 @@
+<div class="form-group">
+        <label for="Username"> User Name:</label>
+        <input type="text" id="Username" name="Username" class="form-control" [ngModel]="UserInput.Username" (ngModelChange)="firstToUpper($event)" /> 
+        </div>
+        <button (click)="getDetails()">getuserinput</button>
+        {{ UserInput | json}}
+        <div *ngIf="access">
+            <h1> User Details </h1>
+
+            <table class="table table-striped">
+                <thead>
+                 <tr>
+                    <th> User Name </th>
+                    <th> User Email </th>
+                    <th> User Mob no.</th>
+                </tr>   
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                           {{ all }}
+                        </td>
+                        <td>
+                           {{ UserEmail }}
+                        </td>
+                        <td>
+                           {{Callme }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        
+    
