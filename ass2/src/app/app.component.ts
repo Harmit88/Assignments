@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from './login.model';
+//import { User } from './login.model';
 
 
 @Component({
@@ -8,7 +8,7 @@ import { User } from './login.model';
 })
 
 export class AppComponent{
- data = new User('','');
+ //data = new User('','');
 // display(value:String ):void{
   
  //  }
