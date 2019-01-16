@@ -1,0 +1,19 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+            Date Formate
+    </div>
+    <div class="panel-body">
+    <div class="row">
+        <div class="col-md-2">
+            Input Date :
+        </div>
+        <div class="col-md-2">
+            <input type="date"  name="userinput" id="userinput" [(ngModel)]="UserDate" />
+        </div>
+        <div class="col-md-2" *ngIf="UserDate">
+               <!--<button type="submit">Submit</button>--> 
+                {{ UserDate | datepipe }}
+            </div>
+    </div>
+
+</div>
