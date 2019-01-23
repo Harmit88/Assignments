@@ -28,6 +28,14 @@
             "scripts": []
           },
           "configurations": {
+            "fr": {
+              "aot": true,
+              "outputPath": "dist/ass4/",
+              "i18nFile": "src/locale/messages.fr.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "fr",
+              "i18nMissingTranslation": "error"
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -62,6 +70,9 @@
           "configurations": {
             "production": {
               "browserTarget": "ass4:build:production"
+            },
+            "fr": {
+              "browserTarget": "ass4:build:fr"
             }
           }
         },
