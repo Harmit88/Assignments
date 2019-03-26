@@ -1,0 +1,52 @@
+<div class="container">
+<div class="panel panel-primary">
+    <div class="panel-heading">
+          <h4>User Registration</h4>
+    </div>
+    <div class="panel-body">
+            <form class="form-horizontal" form-group="registerUser" (ngSubmit)="onSubmit()"  [class.has-error]="UserName.invalid && UserName.touched">
+                <div class="form-group" for="Username">
+                    <label class="control-label col-sm-2">User Name : </label>
+                    <input tyep="text" id="Username" name="Username" #UserName="ngModel" [(ngModel)]="RegisterData.name" required/>
+                </div>
+                <div class="alert alert-danger" *ngIf="UserName.invalid && UserName.touched">
+                    User name is required
+                </div>
+                <div class="form-group" for="Email" [class.has-error]="emailid.invalid && emailid.touched">
+                        <label class="control-label col-sm-2" for="Email" >Email : </label>
+                        <input tyep="email" id="Email" name="Email" #emailid="ngModel" [(ngModel)]="RegisterData.email" required/>
+                </div>
+                <div class="alert alert-danger" *ngIf="emailid.invalid && emailid.touched">
+                    Email id is required
+                </div>
+                <div class="form-group" [class.has-error]="contactno.invalid && contactno.touched">
+                        <label class="control-label col-sm-2"  for="Contact">Cell Number : </label>
+                        <input tyoe="text" id="Contact" name="Contact" #contactno="ngModel" [(ngModel)]="RegisterData.contact" required/>
+                </div>
+                <div class="alert alert-danger" *ngIf="contactno.invalid && contactno.touched">
+                       Contact number is required
+                    </div>
+                <div class="form-group" [class.has-error]="pass.invalid && pass.touched">
+                        <label class="control-label col-sm-2"  for="Password">Password :</label>
+                        <input type="password" id="Password" name="Password" #pass="ngModel" [(ngModel)]="RegisterData.password" required/>
+                </div>
+                <div class="alert alert-danger" *ngIf="pass.invalid && pass.touched">
+                    password is required
+                </div>
+                <div class="form-group" [class.has-error]="conpass.invalid && conpass.touched">
+                        <label class="control-label col-sm-2"  for="confPassword">Confirm Password :</label>
+                        <input type="password" id="confPassword" name="confPassword"  #conpass="ngModel" [(ngModel)]="RegisterData.confpassword" required/>
+                </div>
+                <div class="alert alert-danger" *ngIf="conpass.invalid && conpass.touched">
+                      confirm password is required
+                    </div>
+                <div class="col-sm-offset-2 ">
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+
+
+        </form>
+
+    </div>
+</div>
+</div>

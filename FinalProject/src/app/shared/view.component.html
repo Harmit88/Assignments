@@ -1,0 +1,32 @@
+
+<div class="panel panel-primary">
+    <div class="panel-heading" align="right">
+      {{ title}}
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-6">
+                    <img src="./assets/default_User.jpg" style="height:150px;width:150px" />
+            </div>
+            <div class="col-sm-6"  >
+               
+             <div> User_id : {{ id }}</div>
+                   <div>Name : {{Name}} </div> 
+                    <div>Email: {{Email}}</div>
+                    <div>Contact No. : {{ Contact}} </div>
+                    <div> Role : {{ Role }}</div>
+                    <br>
+                    <br>
+                <input type="button"  class="btn btn-primary" id="Back"  value="Back" [routerLink]="['/back']"    /> &nbsp;
+                
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+
+            
+        </div>
+        
+    </div>
+</div>
+

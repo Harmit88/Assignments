@@ -1,0 +1,51 @@
+{
+  "users": [
+    {
+      "id": 6,
+      "Role": "0",
+      "Email": "darshana@innovera.com",
+      "Contact": "+18542318754",
+      "Password": "test"
+    },
+    {
+      "id": 7,
+      "Name": " Harmit",
+      "Role": 0,
+      "Email": "harmit.kaur.bijjan@gmail.com",
+      "Contact": " 4024274474",
+      "Password": "test"
+    },
+    {
+      "id": 8,
+      "Name": " Piyush",
+      "Role": "1",
+      "Email": "piyushversatile96@gmail.com",
+      "Contact": " 23445465778",
+      "Password": "test"
+    },
+    {
+      "id": 15,
+      "Name": " Aman",
+      "Role": "0",
+      "Email": "Aman@gmail.com",
+      "Contact": "546652676732",
+      "Password": "test"
+    },
+    {
+      "id": 16,
+      "Name": "Usha",
+      "Role": "0",
+      "Email": "Usha@gmail.com",
+      "Contact": "52435235236",
+      "Password": "TEST"
+    },
+    {
+      "id": 17,
+      "Email": "richa@gmail.com",
+      "Name": "Richa",
+      "Contact": "45646567",
+      "Role": "0",
+      "Password": "test"
+    }
+  ]
+}

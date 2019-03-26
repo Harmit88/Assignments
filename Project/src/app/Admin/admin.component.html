@@ -1,0 +1,79 @@
+
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="row">
+                <div class="col-sm-2">
+                        <h5> Hello {{ DisplayUser }}</h5>
+                </div>
+
+                <div class="col-sm-10" align="right">
+                        <span *ngIf="Show"><input type="text" [(ngModel)]= "filterText" id="userinput" name="userinput" style="color:black;width: 300px;height: 30px;" aria-pressed="true"/></span>
+                        <!--<span class="glyphicon glyphicon-search" style="color:black" ></span> --> 
+                 <button type="button" class="btn btn-default btn-sm" (click)="getData()" >
+                     <span class="glyphicon glyphicon-search"></span>
+                   </button>&nbsp;
+                             
+                   <button type="button" class="btn btn-default btn-sm" (click)="addUser()"  >
+                         <span class="glyphicon glyphicon-plus"></span> Create User
+                       </button> 
+                </div>
+                
+        </div>
+       
+        
+            
+    </div>
+    <div class="panel-body">
+            <div  *ngFor="let use of User | filterpipe:filterText"> 
+            
+            <div class="row" style="border-style:outset;border-bottom-color: lightskyblue">
+            <div class="col-sm-6">
+                    <img src="./assets/default_User.jpg" style="height:150px;width:200px" />
+            </div>
+            <div class="col-sm-6" >
+                   <div>Name :{{ use.Name }} </div> 
+                    <div>Email: {{use.Email }}</div>
+                    <div> Contact No. :  {{ use.Contact }} </div>
+                    <br>
+                    <br>
+                    <div>  
+                        <input type="button"  class="btn btn-primary"  value="View"  [routerLink]="['/submitAdmin/view/',use.id]" [queryParams]="{id:use.id,Name:use.Name,Email:use.Email,Contact:use.Contact,Role:use.Role}"/> &nbsp;
+                        <!--<input type="button"  class="btn btn-primary" id="Update"  value="Update" (click)="EditUser(use)" [routerLink]="['/edit/0']" />&nbsp;-->
+                        <input type="button"  class="btn btn-primary" id="Update"  value="Update" (click)="EditUser(use)" />&nbsp;
+                        <input type="button"  class="btn btn-primary" id="Manage_Role"  value="Manage Role" (click)="manageRole(use)"/>&nbsp;
+                        <input type="button"  class="btn btn-primary" id="Delete"  value="Delete" (click)="DeleteUser(use)"/>&nbsp;
+                    </div>
+            </div>
+        </div><br><br>
+    </div>
+</div>
+</div>
+<div>
+</div>
+
+<!--
+[queryParams]="{id:use.id}"
+<view-comp (click)="ViewDetails(use.id)"></view-comp>
+
+ <input type="button"  class="btn btn-primary" id="View"  value="View"  [routerLink]="['/submitAdmin/view/']"/> &nbsp;
+
+ <input type="button"  class="btn btn-primary" id="View"  value="View"  (click)="ViewDetails(use.id)" /> &nbsp;
+    <table>
+            <thead>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="./assets/default_User.jpg" style="height:100px;width:100px" />
+                    </td>
+                    <td>User Name :<br>
+                    Email id
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+-->
