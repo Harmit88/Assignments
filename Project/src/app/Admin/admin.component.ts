@@ -53,9 +53,9 @@ export class AdminComponent implements OnInit{
        manageRole(use:Iuser):void{
           console.log(use.Role);
           localStorage.removeItem("EditUserID");
+         // localStorage.removeItem("Role");
           localStorage.setItem("EditUserID",use.id.toString());
-          localStorage.removeItem("Role");
-          localStorage.setItem("Role",use.Role.toString());
+         // localStorage.setItem("Role",use.Role.toString());
           this.router.navigate(['submitAdmin/manageRole']);
        }
        DeleteUser(user:Iuser):void{

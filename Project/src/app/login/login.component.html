@@ -5,33 +5,40 @@
             </div>
             <div class="panel-body">
                <form  class="form-horizontal" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-               <!-- <div [hidden]="">Invalid User id and password </div>-->
-                <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.Name.errors }">
+                    <div class="form-group"> 
+                        <div class="col-sm-2">
+                            </div>
+                     <div id="error1" class="col-sm-6" *ngIf ="isSubmitted">Invalid User id and password </div>
+                    </div>
+                    
+               <div class="form-group" >
                      <label class="control-label col-sm-2" for="Name"> User ID :</label>
-
-                     
-                 <div class="col-sm-6">
-                    <input type="text" formControlName="Name" id="name" name="name" class="form-control"/>
+   
+                 <div class="col-sm-6" >
+                    <input type="text" formControlName="Name" id="Name" name="Name" class="form-control"/>
+                   
                 </div>
-                <div *ngIf="isSubmitted && formControls.Name.errors" >
+               
+                <!--<div *ngIf="isSubmitted && formControls.Name.errors" >
                         <div *ngIf="formControls.Name.errors.required">User ID is required</div>
-                      </div>
+                      </div>-->
+                     
        
                 </div>
 
-                <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.Password.errors }">
+                <div class="form-group">
                     <label class="control-label col-sm-2" for="Password"> Password :</label>
                     <div class="col-sm-6">
                     <input type="password" formControlName="Password"  id="Password" name="Password" class="form-control" />
                 </div>
-                <div *ngIf="isSubmitted && formControls.Password.errors" >
+               <!-- <div *ngIf="isSubmitted && formControls.Password.errors" >
                         <div *ngIf="formControls.Password.errors.required">Password is required</div>
-                      </div>
+                      </div> -->
                      
-        
+                  
                 </div><br>
                         <div class="col-sm-offset-2 col-sm-10">
-                        <input type="submit" class="btn btn-primary" value="Login Here" />       
+                        <input type="submit" class="btn btn-primary" [disabled]="!loginForm.valid"    value="Login Here" />       
                 </div>
             </form>
             </div>

@@ -1,0 +1,49 @@
+#map {
+    height: 40vh;
+    width: 50vw;
+}
+
+.address{
+    font-size: 14px;
+    color:#767676;
+}
+
+#title{
+    font-size: 14px;
+   font-weight: bold;
+   color:#767676;
+}
+a#info{
+font-size: 14px;
+ color:#dd3333;
+ text-decoration: none;
+ font-weight: normal;
+}
+
+a#info:hover{
+font-size: 14px;
+ color:#767676;
+ text-decoration: none;
+}
+
+a#contact{
+font-size: 14px;
+ color:#767676;
+ text-decoration: none;
+ font-weight: bold;
+}
+
+
+#phone{
+    font-size: 14px;
+    font-weight: bold;
+    color:#767676;
+}
+.container{
+ background-color: white;
+ top:30px;
+
+}
+h6{
+    color:#767676;
+}

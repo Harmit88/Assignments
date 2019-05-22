@@ -1,0 +1,47 @@
+#content{
+    background-color: #252525;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 150px;
+    padding-bottom: 120px;
+    position: relative;
+    top:2000px;
+    width: full;
+}
+
+h3{
+    color: #c5c5c5;
+    font-size: 15px;
+    margin: 5px 0 0;
+    align-content: left;
+}
+#map1{
+    height: 290px;
+    width: 100%;
+    padding: 3px;
+}
+
+#map{
+    height: 290px;
+    width: 100%;
+    padding: 3px;
+}
+img {
+    
+    padding: 3px;
+    
+}
+#text{
+    color: #767676;
+    align-content: left;
+    font-size: 15px;
+   
+}
+.modal-content{
+   height:425px;
+    width: 525px; 
+}
+img#largeimg{
+    height:400px;
+    width: 500px;
+}

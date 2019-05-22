@@ -1,0 +1,67 @@
+img{
+  height: 1000px;
+  width: 100%; 
+  z-index: -1;
+} 
+
+ngb-carousel {
+  background-color: black;
+} 
+.carousel-caption {
+  top:25%;
+   bottom:auto;
+   height: 100vh;
+   padding-bottom: 250px;
+   letter-spacing: 1px;
+
+}
+
+.carousel-caption h1 {
+ font-size: 50px;
+ letter-spacing: 1px;
+ 
+}
+
+p {
+    font-size: 30px;
+    font-weight: normal;
+    z-index: 1;
+    letter-spacing: 1px;
+}
+.underline{
+
+   width: 30%;
+   border-color: #dd3333;
+    
+}
+.underline1{
+
+   width: 10%;
+   border-color: #dd3333;
+    
+}
+
+h1{
+    font-size: 55px;
+
+}
+
+.button4 {
+  background-color:#dd3333; 
+  color: white; 
+  border: 2px solid #dd3333;
+  padding: 13px 36px;
+  border-radius: 4px;
+}
+
+.button4:hover {
+  background-color: transparent;
+  color: #dd3333;
+}
+ng-template{
+    height:200vh;
+}
+
+
+
+

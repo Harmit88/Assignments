@@ -40,7 +40,7 @@ export class editComponent implements OnInit{
                   .pipe(first())
                   .subscribe(
                     data => {
-                      this.router.navigate(['submitAdmin']);
+                      this.router.navigate(['/submitAdmin']);
                     },
                     error => {
                       alert(error);

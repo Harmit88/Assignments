@@ -1,56 +1,77 @@
 
 import { Router } from '@angular/router';
-import { Component, Input, ComponentFactoryResolver} from '@angular/core';
-import { User } from '../user.model';
+import { Component, OnInit, NgZone} from '@angular/core';
 import { myService } from '../shared/my.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
+import { Iuser } from '../common.model';
 
 
 @Component({
   selector :'login-comp',
-  templateUrl:'login.component.html'
+  templateUrl:'login.component.html',
+  styleUrls:['login.component.css']
 })
 
-export class LoginComponent{
+export class LoginComponent implements OnInit{
+
     Name:string;
     Password:string;
     loginForm: FormGroup;
     IsLoggined:boolean = true;
-    isSubmitted  =  false;
+   isSubmitted  =  false;
+    data:Iuser[];
 
- constructor( private router : Router,
+
+ constructor( public router : Router,
               private myService:myService ,
-              private formBuilder:FormBuilder){}
+              private formBuilder:FormBuilder,
+              private zone:NgZone){ }
 
-  ngOnInit(){
-
-this.loginForm=this.formBuilder.group({
+  ngOnInit():void{
+    this.loginForm=this.formBuilder.group({
   Name:['',Validators.required],
-  Password:['',[Validators.required,Validators.maxLength(6)]]
-})
+  Password:['',[Validators.required,Validators.minLength(6)]]
+  })
+
   }
-  get formControls() { return this.loginForm.controls; }
+ // get formControls() { return this.loginForm.controls; }
 
   onSubmit(){
-    this.Name=this.loginForm.controls.Name.value;
-    this.Password=this.loginForm.controls.Password.value;
-    //console.log(this.loginForm.value);
-    this.isSubmitted=true;
-                if(this.loginForm.invalid){
-                 // console.log("yes its invalid");
-                  return;
-                }
-    this.router.navigate(['submitAdmin']);
-    //  this.myService.loginForm(loginForm.value).subscribe((res) =>{
-    //    console.log("this is" +res)
-      //console.log("hello" +this.Name);
-     localStorage.setItem("Name", this.Name);
-     localStorage.setItem("Password",this.Password)
+   
+  this.Name=this.loginForm.controls.Name.value;
+  this.Password=this.loginForm.controls.Password.value;
+                //
+                  //         if(this.loginForm.invalid){
+                            // console.log("yes its invalid");
+                    //          return;
+                    //       }
+         this.myService.getUser().subscribe(data => {
+           this.data = data
+           this.data.forEach(element => {
+            if ( this.Name == element.Name && this.Password == element.Password)
+            {
+              //console.log(this.Name);
+             // console.log(element.Name);
+             //this.isSubmitted  =  false;
+             this.zone.run(() =>this.router.navigate(['/submitAdmin']));
+            //this.router.navigate(['/submitAdmin']);
+            
+            localStorage.setItem("Name", this.Name);
+            localStorage.setItem("Password",this.Password)
+            }
+            else
+            {
+             // alert("Invalid Id and Password");
+
+             this.isSubmitted=true;
+            }
+            });
     
-      }
-     
+  
+      });
     }
+  }
+    
   
  // Data = new User('','');
     
@@ -91,5 +112,3 @@ this.loginForm=this.formBuilder.group({
     }
     console.log(this.Data.name)
     return this.Data.name */
-  
-   

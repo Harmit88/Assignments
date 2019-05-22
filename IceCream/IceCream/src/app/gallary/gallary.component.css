@@ -1,0 +1,20 @@
+img {
+
+    padding: 2px;
+    
+}
+/*.column :hover{
+
+     height:253px;
+     width:254px;
+     padding:0px;
+}*/
+.modal-content{
+   height:425px;
+    width: 525px; 
+}
+img#largeimg{
+    height:400px;
+    width: 500px;
+}
+

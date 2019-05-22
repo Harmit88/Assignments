@@ -21,6 +21,7 @@ export class MyComponent implements OnInit{
   Logout(){
     window.localStorage.clear();
     this.router.navigate(['/login']);
+    window.sessionStorage.clear();
     
   }
     

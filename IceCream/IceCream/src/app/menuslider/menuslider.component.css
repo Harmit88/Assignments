@@ -1,0 +1,10 @@
+img{
+  height: 600px;
+  width: 700px; 
+  z-index: -1;
+  align-items: center;
+} 
+
+ngb-carousel {
+  background-color: white;
+}

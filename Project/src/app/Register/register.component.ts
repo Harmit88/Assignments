@@ -23,21 +23,25 @@ RegisterForm:FormGroup;
    ngOnInit(){
    this.RegisterForm=this.formBuilder.group({
       id:[],
-      Name:['',Validators.required],
-      Password:['',[Validators.required,Validators.maxLength(6)]],
+      Name:['',[Validators.required,Validators.minLength(6)]],
+      Password:['',[Validators.required,Validators.minLength(6)]],
       Email:['',Validators.required],
-      Contact:['',Validators.required],
+      Contact:['',[Validators.required,Validators.maxLength(10)]],
       Role:['',Validators.required]
 
    });
    }
    onSubmit(){
-    this._myService.RegisterUser(this.RegisterForm.value).subscribe(data =>{
-      
-         this.router.navigate(['/login']);
-   });
-   }
 
+      if (this.RegisterForm.invalid){
+         alert("Fill all Details");
+      }
+      else{
+         this._myService.RegisterUser(this.RegisterForm.value).subscribe(data =>{
+            this.router.navigate(['/login']);
+      });
+   }
+   }
   /*    this.route.paramMap.subscribe(parametermap =>{
      const id=   + parametermap.get('id');
      this.getUser(id);

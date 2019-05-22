@@ -1,0 +1,54 @@
+.navbar-brand
+{
+    font-size:14px;
+    color: white;
+     z-index: 999;
+}
+
+.navbar-brand:hover
+{
+    color: #dd3333;
+    z-index: 999;
+}
+/*#navigation{
+    top:0px;
+ z-index: 999;
+}*/
+
+
+.header {
+    position: fixed;
+    width: 100%;
+    top:0px;
+
+}
+#gallary{
+    padding-left: 220px;
+    padding-top: 150px;
+    padding-bottom: 120px;
+    background-color: white;
+    position: relative;
+    top:2000px;
+  
+}
+#gallary1{
+    padding-left: 220px;
+    padding-top: 150px;
+    padding-bottom: 120px;
+    background-color: white;
+    position: relative;
+    top:500px;
+}
+#details{
+   position: relative;
+}
+
+#footer {
+   position: fixed;
+   left:0px;
+   bottom:0px;
+   height:30px;
+   width:100%;
+   color:white;
+   background:black;
+}

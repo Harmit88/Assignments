@@ -7,7 +7,7 @@ export class RegisterUser implements Iuser{
         public Name:string,
         public Email:string,
         public Contact:string,
-        public password:string,
+        public Password:string,
         public confpassword:string,
         public Role:String
     ){}

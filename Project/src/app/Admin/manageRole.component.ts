@@ -18,7 +18,7 @@ export class roleComponent implements OnInit{
 
     ngOnInit(){
 
-        localStorage.getItem("role")
+        //localStorage.getItem("role")
        let userId=localStorage.getItem("EditUserID");
       // console.log(userId);
         if(!userId){
@@ -35,8 +35,9 @@ export class roleComponent implements OnInit{
             Contact:['',Validators.required],
             Password:['',Validators.required]
         });FormGroup
-       this.manageRole.controls['Name'].disable();
+       //this.manageRole.controls['Name'].disable();
         this.Myservice.getUserById(+userId).subscribe(data =>{
+          //  this.manageRole.controls['Name'].enable();
             this.manageRole.setValue(data);
 
            // console.log(data);

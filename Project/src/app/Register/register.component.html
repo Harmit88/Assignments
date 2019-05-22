@@ -4,34 +4,91 @@
 <div class="panel panel-body">
 <div class="col-md-6">
         <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
-    
-        <div class="form-group">
+        <fieldset>
+        <div class="form-group" [ngClass]="{'has-error':(RegisterForm.get('Name').touched || RegisterForm.get('Name').dirty) && !RegisterForm.get('Name').valid }">
             <label for="Name">Name:</label>
-            <input formControlName="Name" placeholder="Name" name="Name" class="form-control" id="Name">
-        </div>
-        <div class="form-group">
-            <label for="Password">Password:</label>
-            <input type="password" formControlName="Password" name="Password" class="form-control" id="Password">
+            <input  type="text" formControlName="Name" placeholder="Name (required)"  class="form-control" id="Name" />
+           <!-- <div *ngIf="Name.invalid && (Name.touched || name.dirty)" class="alert alert-danger"></div> -->
+           <span class="help-block" *ngIf="(RegisterForm.get('Name').touched || RegisterForm.get('Name').dirty) && RegisterForm.get('Name').errors">
+             <span *ngIf="RegisterForm.get('Name').errors.required"> 
+               Please Enter Name
+             </span>
+             <span *ngIf="RegisterForm.get('Name').errors.minlength"> 
+               Minimum length is 6 character
+             </span>
+           </span>
         </div>
       
-        <div class="form-group">
+        
+        <div class="form-group" [ngClass]="{'has-error':(RegisterForm.get('Password').touched || RegisterForm.get('Password').dirty) && !RegisterForm.get('Password').valid}">
+              <label for="Password">Password:</label>
+              <input  type="password" formControlName="Password" placeholder="Password"  class="form-control" id="Password" />
+             <!-- <div *ngIf="Name.invalid && (Name.touched || name.dirty)" class="alert alert-danger"></div> -->
+             <span class="help-block" *ngIf="(RegisterForm.get('Password').touched || RegisterForm.get('Password').dirty) && RegisterForm.get('Password').errors">
+               <span *ngIf="RegisterForm.get('Password').errors.required"> 
+                 Please Enter the password
+               </span>
+               <span *ngIf="RegisterForm.get('Password').errors.minlength"> 
+                 Minimum length is 6
+               </span>
+             </span>
+          </div>
+        
+      
+      <!-- <div class="form-group">
             <label for="Email">Email address:</label>
             <input type="Email" formControlName="Email" placeholder="Email" name="Email" class="form-control" id="Email">
-        </div>
+        </div>--> 
+
+        <div class="form-group" [ngClass]="{'has-error':(RegisterForm.get('Email').touched || RegisterForm.get('Email').dirty) && !RegisterForm.get('Email').valid}">
+          <label for="Email">Email:</label>
+          <input  type="text" formControlName="Email" placeholder="Email"  class="form-control" id="Email" />
+         <!-- <div *ngIf="Name.invalid && (Name.touched || name.dirty)" class="alert alert-danger"></div> -->
+         <span class="help-block" *ngIf="(RegisterForm.get('Email').touched || RegisterForm.get('Email').dirty) && RegisterForm.get('Email').errors">
+           <span *ngIf="RegisterForm.get('Email').errors.required"> 
+             Email id required
+           </span>
+           <span *ngIf="RegisterForm.get('Email').errors.minlength"> 
+            Please enter the valid mail id
+           </span>
+         </span>
+      </div>
         
-          <div class="form-group">
+        
+        <!-- <div class="form-group">
             <label for="Contact">Contact Number:</label>
             <input formControlName="Contact" placeholder="Contact Number" name="Contact" class="form-control" id="Contact">
-          </div>
+          </div>--> 
+
+          <div class="form-group" [ngClass]="{'has-error':(RegisterForm.get('Contact').touched || RegisterForm.get('Contact').dirty) && !RegisterForm.get('Contact').valid}">
+            <label for="Contact">Contact Number:</label>
+            <input  type="text" formControlName="Contact" placeholder="Contact"  class="form-control" id="Contact" />
+           <!-- <div *ngIf="Name.invalid && (Name.touched || name.dirty)" class="alert alert-danger"></div> -->
+           <span class="help-block" *ngIf="(RegisterForm.get('Contact').touched || RegisterForm.get('Contact').dirty) && RegisterForm.get('Contact').errors">
+             <span *ngIf="RegisterForm.get('Contact').errors.required"> 
+               Contact is required
+             </span>
+             <span *ngIf="RegisterForm.get('Contact').errors.maxlength"> 
+              Maximum length is 10 
+             </span>
+           </span>
+        </div>
+
     
-           <div class="form-group">
+           <div class="form-group" [ngClass]="{'has-error':RegisterForm.get('Role').dirty && !RegisterForm.get('Role').valid }">
             <label for="Role">Admin   
             <input type="radio" formControlName="Role" name="Role" class="form-control" value="1"></label>
             <label for="Role">User   
             <input type="radio" formControlName="Role" name="Role" class="form-control" value="0" /></label>
           </div>
+          <span class="help-block" *ngIf="RegisterForm.get('Role').dirty && !RegisterForm.get('Role').valid">
+              <span>
+                Please select the value
+              </span>
+          </span>
 
-          <button class="btn btn-primary">Update</button>
+          <button class="btn btn-primary">Register</button>
+        </fieldset>
         </form>
       </div>
     </div>
