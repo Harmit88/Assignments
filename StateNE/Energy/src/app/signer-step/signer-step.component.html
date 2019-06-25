@@ -1,0 +1,238 @@
+
+<form>
+    <fieldset class="border p-2" style="background-color:white" id="Header" >
+        <legend  id="HeaderContent" class="w-auto" style="background-color:rgb(233, 232, 232) " >
+            <span  class="float-left" style="font-size: 20px; color:rgb(18, 100, 167);" >
+                <i class="fa fa-home" aria-hidden="true" routerLink="/Home"> Home </i> 
+            </span>
+                <i class="float-center" style="color:rgb(18, 100, 167);">NEO Loan ID : 0</i>
+        </legend>
+               <p id="Details" class="float-left">First add the Borrower ,then you will be allowed to add the rest of the Loan Application<br>
+                 Items with * are required before you may Finish the Loan Application  and send it to NEO  </p><br><br>
+                 <br>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-1">
+                <div class="symbol">
+                    <br>
+                    Step 1 Borrower
+                </div>
+                </div>
+            <div class="col-sm-1">
+                <div class="symbol">
+                    <i class="fa fa-star" aria-hidden="true" style="color:yellow"></i><br>
+                    Step 2 Signer
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="symbol">
+                    <br>
+                    Step 3 Project
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="symbol">
+                    <br>
+                    Step 4 &nbsp;&nbsp;Fee
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="symbol">
+                    <br>
+                    Step 5 Detail
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="symbol">
+                    <br>
+                    Step 6 Secure
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="symbol">
+                    <br>
+                    Step 7 guarantee
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="symbol">
+                    <br>
+                    Step 8 Lender
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="symbol">
+                    <br>
+                    NEO Comment
+                </div>
+            </div>
+
+        </div><br>
+        <div class="fluid-container" style="background-color:rgb(233, 232, 232)">
+            <br>
+        <div class="row">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-2">
+              <button  id="addSigner" class="btn btn-primary btn-block" [disabled]="disableButton" (click)="showTab()">  Add New Signer </button>
+            </div>
+        </div><br>
+        <div class="row" *ngIf="!show">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-3"> 
+                <button class="btn btn-primary btn-block">Go to Step 3</button>
+            </div>
+        </div>
+            <br>
+        <div class="card" *ngIf="show">
+            <div class="card-header" style="font-weight: bold;color:gray">
+                Signer Information
+            </div>
+            <div class="card-body">
+                    <div class="card-title">
+                        <button class="btn btn-secondary btn-sm" style="width: 100%;background-color: gray">
+                            There are currently no Signers associated with this loan
+                        </button>
+                        <button class="btn btn-secondary btn-sm" style="font-size:20px;width: 100%;background-color: gray">
+                            Add New Signer
+                        </button>
+                        <p id="warning">All required fields much be entered to add a new Signer.</p>
+                    </div>
+                    <fieldset class="border p-2" style="background-color:white" id="NewSigner" >
+                    <legend  id="title" class="w-auto" >
+                        Name
+                    </legend>
+                    <div class="row">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="uname">First:<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                                <input type="text" class="form-control" id="uname"  name="uname" required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="uname">MI/Name:</label>
+                                <input type="text" class="form-control" id="uname" name="uname" required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="uname">Last/Suffix:<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                                <input type="text" class="form-control" id="uname"  name="uname" required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="uname">Title:</label>
+                                <input type="text" class="form-control" id="uname"  name="uname" required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2"></div>
+                     </div>
+                    </fieldset>
+                    <fieldset class="border p-2">
+                        <legend id="title">Type</legend>
+                            <div class="row">
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-4">
+                                    <label for="taxtype">Tax Type :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                                    <select id="taxtype" class="form-control form-control-md" style="background-color:white;">
+                                        <option>Choose one</option>
+                                        <option>FTIN</option>
+                                        <option>SSN</option>
+                                        <option>State Col. ID</option>
+                                      </select>
+                                </div>
+                                        <div class="col-sm-4">
+                                            <label for="ftin">FTIN :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                                            <input type="text" class="form-control" id="uname" name="uname" required>
+                                            <div class="valid-feedback">Valid.</div>
+                                            <div class="invalid-feedback">Please fill out this field.</div>
+                                           </div>
+                                <div class="col-sm-2"></div>
+                              </div> <br>
+                              <div class="row">
+                                  <div class="col-sm-2"></div>
+                              <div class="col-sm-4">
+                                <label for="ftin">Relationship to Property:<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                                <select id="ftin" class="form-control form-control-md" style="background-color:white;">
+                                    <option>Choose one</option>
+                                    <option>Owner</option>
+                                    <option>Partner</option>
+                                    <option>Corporate Officer</option>
+                                    <option>Tenant</option>
+                                    <option>Trustee</option>
+                                    <option>Elected Official</option>
+                                    <option>Government Official</option>
+                                    <option>Member</option>
+                                    <option>Employee</option>
+                                    <option>None</option>
+                                  </select>
+                              </div>
+                            </div>
+                                <div class="row">
+                                        <div class="col-sm-2"></div>
+                                          
+                                          <div class="col-sm-2"></div>
+                                 </div><br>
+                    </fieldset>
+            </div>
+        </div>
+        <br>
+</div>
+<br>
+<div class="row" align="float-center" *ngIf="show">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-primary btn-block">Cancel</button>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary btn-block"> Add  </button>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary btn-block" routerLink="/NewLoan/Signer/Project"  > Go to Step 3 </button>
+            </div>
+            
+        </div>
+    </fieldset>
+    
+</form>
+       
+       
+       
+       
+       
+       
+       <!--
+           <div class="fluid-container" style="background-color:rgb(233, 232, 232)">
+          <br>
+         <fieldset class="border p-2">
+             <legend id="NameCoulum">Name</legend>
+        
+            </fieldset>         
+         </div><br>
+         <div class="row" align="float-center">
+             <div class="col-sm-3"></div>
+             <div class="col-sm-2">
+                 <button type="submit" class="btn btn-primary btn-block">Cancel</button>
+             </div>
+             <div class="col-sm-2">
+                 <button type="button" class="btn btn-primary btn-block"> Add  </button>
+             </div>
+             <div class="col-sm-2">
+                 <button type="button" class="btn btn-primary btn-block"> Go to Step 2 </button>
+             </div>
+             
+         </div>
+         <br> -->
+    
+    

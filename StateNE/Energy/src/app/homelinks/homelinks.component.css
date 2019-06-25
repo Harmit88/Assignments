@@ -1,0 +1,20 @@
+.btn-outline-primary:hover{
+    background-color: rgb(18, 100, 167);
+    border-color:rgb(18, 100, 167);
+    width: 80%;
+    height:90px;
+}
+.btn-outline-primary{
+    border-color:rgb(18, 100, 167);
+    width: 80%;
+    height:90px;
+}
+
+.row#body1{
+    padding-top: 100px;
+    border: none;
+}
+.row#body2{
+    padding-top: 100px;
+    border: none;
+}

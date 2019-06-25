@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+
+#Details{
+    font-size: 12px;
+    padding-left: 170px;
+    padding-top: 10px;
+    font-weight: bold;
+     color:rgb(175, 101, 17);
+     }
+     button{
+        background-color: rgb(18, 100, 167);
+    }
