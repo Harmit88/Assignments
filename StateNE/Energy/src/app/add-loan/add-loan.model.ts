@@ -1,0 +1,21 @@
+export interface IaddLoan{
+    lender :String,
+    fname : String,
+    mname : String,
+    lname : String,
+    title : String,
+    ename : String,
+    taxtype: String,
+    ftin: String,
+    relationship : String,
+    borrower : String,
+    phonenumber : number,
+    Address1 : String,
+    Address2 : String,
+    City : String,
+    State : String,
+    Zip : number,
+    country : String,
+    lDistrict : String,
+    cDistrict : String
+}

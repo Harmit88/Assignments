@@ -1,5 +1,5 @@
 
-<form>
+<form [formGroup]="newSignerForm" novalidate (ngSubmit)="onSubmit()"> 
     <fieldset class="border p-2" style="background-color:white" id="Header" >
         <legend  id="HeaderContent" class="w-auto" style="background-color:rgb(233, 232, 232) " >
             <span  class="float-left" style="font-size: 20px; color:rgb(18, 100, 167);" >
@@ -96,44 +96,63 @@
                         <button class="btn btn-secondary btn-sm" style="font-size:20px;width: 100%;background-color: gray">
                             Add New Signer
                         </button>
-                        <p id="warning">All required fields much be entered to add a new Signer.</p>
+                        <p id="warning">All required fields must be entered to add a new Signer.</p>
                     </div>
                     <fieldset class="border p-2" style="background-color:white" id="NewSigner" >
                     <legend  id="title" class="w-auto" >
                         Name
                     </legend>
+                    <!--
+                        <div *ngIf="addLoanForm.controls['fname'].invalid && ( addLoanForm.controls['fname'].dirty || submitted || addLoanForm.controls['fname'].touched )" class="alert alert-danger">
+                                <div *ngIf="addLoanForm.controls['fname'].errors.required">
+                                    First Name required
+                                </div>
+                        </div>
+                    -->
+                    <br>
                     <div class="row">
-                        <div class="col-sm-2"></div>
                         <div class="col-sm-2">
-                            <div class="form-group">
-                                <label for="uname">First:<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
-                                <input type="text" class="form-control" id="uname"  name="uname" required>
-                                <div class="valid-feedback">Valid.</div>
-                                <div class="invalid-feedback">Please fill out this field.</div>
-                            </div>
+                                <label for="fname" class="float-right">First:<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
                         </div>
                         <div class="col-sm-2">
                             <div class="form-group">
-                                <label for="uname">MI/Name:</label>
+                                <input type="text" class="form-control" formControlName="fname" id="fname"  name="fname" required>
+                                <div *ngIf="newSignerForm.controls['fname'].invalid && (newSignerForm.controls['fname'].dirty || submitted  || newSignerForm.controls['fname'].touched)" class="alert alert-danger">
+                                    <div *ngIf="newSignerForm.controls['fname'].errors.required">
+                                        First name required
+                                    </div>
+                                </div>
+                        </div>
+                        </div>
+                        <div class="col-sm-1">
+                                <label for="uname" class="float-right">MI/Name:</label>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
                                 <input type="text" class="form-control" id="uname" name="uname" required>
-                                <div class="valid-feedback">Valid.</div>
-                                <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
+                        </div>
+                        <div class="col-sm-1">
+                                <label for="lname" class="float-right">Last/Suffix:<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                        </div>
+                        <div class="col-sm-1.5">
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName="lname" id="lname"  name="lname" required>
+                                <div *ngIf="newSignerForm.controls['lname'].invalid  && (newSignerForm.controls['lname'].dirty || submitted || newSignerForm.controls['lname'].touched)" class="alert alert-danger">
+                                    <div *ngIf="newSignerForm.controls['lname'].errors.required">
+                                        last name is required 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="row">
+                        <div class="col-sm-2">
+                                <label for="uname" class="float-right">Title:</label>
                         </div>
                         <div class="col-sm-2">
                             <div class="form-group">
-                                <label for="uname">Last/Suffix:<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
                                 <input type="text" class="form-control" id="uname"  name="uname" required>
-                                <div class="valid-feedback">Valid.</div>
-                                <div class="invalid-feedback">Please fill out this field.</div>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="form-group">
-                                <label for="uname">Title:</label>
-                                <input type="text" class="form-control" id="uname"  name="uname" required>
-                                <div class="valid-feedback">Valid.</div>
-                                <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
                         </div>
                         <div class="col-sm-2"></div>
@@ -141,42 +160,49 @@
                     </fieldset>
                     <fieldset class="border p-2">
                         <legend id="title">Type</legend>
+                        <br>
                             <div class="row">
-                                <div class="col-sm-2"></div>
-                                <div class="col-sm-4">
-                                    <label for="taxtype">Tax Type :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
-                                    <select id="taxtype" class="form-control form-control-md" style="background-color:white;">
-                                        <option>Choose one</option>
-                                        <option>FTIN</option>
-                                        <option>SSN</option>
-                                        <option>State Col. ID</option>
-                                      </select>
+                                <div class="col-sm-2">
+                                        <label for="taxtype" class="float-right">Tax Type :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
                                 </div>
-                                        <div class="col-sm-4">
-                                            <label for="ftin">FTIN :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
-                                            <input type="text" class="form-control" id="uname" name="uname" required>
-                                            <div class="valid-feedback">Valid.</div>
-                                            <div class="invalid-feedback">Please fill out this field.</div>
+                                <div class="col-sm-3">
+                                    <select id="taxtype" class="form-control form-control-md" formControlName="taxtype" style="background-color:white;">
+                                        <option value="" disabled>Choose one</option>
+                                        <option *ngFor="let tax of taxtype" [ngValue]="tax">{{tax}}</option>
+                                      </select>
+                                      <div *ngIf="newSignerForm.controls['taxtype'].invalid && (newSignerForm.controls['taxtype'].dirty || submitted || newSignerForm.controls['taxtype'].touched)" class="alert alert-danger">
+                                          <div *ngIf="newSignerForm.controls['taxtype'].errors.required">
+                                              This field cannot be blank
+                                          </div>
+                                      </div>
+                                </div>
+                                <div class="col-sm-2">
+                                        <label for="ftin" class="float-right">FTIN :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                                </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" formControlName="ftin" id="ftin" name="ftin" required>
+                                            <div *ngIf="newSignerForm.controls['ftin'].invalid && (newSignerForm.controls['ftin'].dirty || submitted || newSignerForm.controls['ftin'].touched)" class="alert alert-danger">
+                                                <div *ngIf="newSignerForm.controls['ftin'].errors.required">
+                                                    This field cannot be blank
+                                                </div>
+                                            </div>
                                            </div>
                                 <div class="col-sm-2"></div>
                               </div> <br>
                               <div class="row">
-                                  <div class="col-sm-2"></div>
-                              <div class="col-sm-4">
-                                <label for="ftin">Relationship to Property:<i class="fa fa-asterisk" aria-hidden="true"></i></label>
-                                <select id="ftin" class="form-control form-control-md" style="background-color:white;">
-                                    <option>Choose one</option>
-                                    <option>Owner</option>
-                                    <option>Partner</option>
-                                    <option>Corporate Officer</option>
-                                    <option>Tenant</option>
-                                    <option>Trustee</option>
-                                    <option>Elected Official</option>
-                                    <option>Government Official</option>
-                                    <option>Member</option>
-                                    <option>Employee</option>
-                                    <option>None</option>
+                                  <div class="col-sm-2">
+                                        <label for="relationship" class="float-right">Relationship to Property:<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                                  </div>
+                              <div class="col-sm-3">
+                                <select id="relationship" class="form-control form-control-md"  formControlName="relationship" style="background-color:white;">
+                                    <option value="" disabled>Choose one</option>
+                                    <option *ngFor="let rel of relationship" [ngValue]="rel">{{rel}}</option>
                                   </select>
+                                  <div *ngIf="newSignerForm.controls['relationship'].invalid  && (newSignerForm.controls['relationship'].dirty || submitted || newSignerForm.controls['relationship'].touched)" class="alert alert-danger">
+                                        <div *ngIf="newSignerForm.controls['relationship'].errors.required">
+                                            This filed cannot be blank
+                                        </div>
+                                  </div>
                               </div>
                             </div>
                                 <div class="row">
@@ -196,7 +222,7 @@
                 <button type="submit" class="btn btn-primary btn-block">Cancel</button>
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn btn-primary btn-block"> Add  </button>
+                <input type="submit" class="btn btn-primary btn-block"> 
             </div>
             <div class="col-sm-2">
                 <button type="button" class="btn btn-primary btn-block" routerLink="/NewLoan/Signer/Project"  > Go to Step 3 </button>

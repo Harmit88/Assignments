@@ -1,5 +1,5 @@
 
-<form [formGroup]="addLoanForm" novalidate (ngSubmit)="onSubmit()">
+<form [formGroup]="addLoanForm"  (ngSubmit)="onSubmit()">
    <fieldset class="border p-2" style="background-color:white" id="Header" >
             <legend  id="HeaderContent" class="w-auto" style="background-color:rgb(233, 232, 232) " >
                     <span  class="float-left" style="font-size: 20px; color:rgb(18, 100, 167);" >
@@ -7,9 +7,9 @@
                     </span>
                     <i class="float-center" style="color:rgb(18, 100, 167);">NEO Loan ID : 0</i>
             </legend>
-                    <p id="Details" class="float-left">First add the Borrower ,then you will be allowed to add the rest of the Loan Application<br>
-                        Items with * are required before you may Finish the Loan Application  and send it to NEO  </p><br><br>
-                    <br>
+                 <!--   <p id="Details" class="float-left">First add the Borrower ,then you will be allowed to add the rest of the Loan Application<br>
+                        Items with * are required before you may Finish the Loan Application  and send it to NEO  </p><br><br> -->
+                    <br> 
             <div class="float-center">
                     <i class="fa fa-star" aria-hidden="true" style="color:yellow"></i><br>
                         Step 1 Borrower
@@ -17,70 +17,80 @@
             <div class="fluid-container" style="background-color:rgb(233, 232, 232)">
                 <br>
             <div class="row">
-            <div class="col-sm-4"></div>
+                <div class="col-sm-2"></div>
+            <div class="col-sm-2">
+                <label for="lender" class="float-right">Select the lender :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+            </div>
                     <div class="col-sm-4">
-                        <label for="lender">Select the lender :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
-                        <select id="lender" class="form-control form-control-md" formControlName="lender" style="background-color:white;">
-                          <option value="" disabled>Choose one</option>
-                          <option *ngFor="let lender of Lender" [ngValue]="lender">{{lender}}</option>
-                        </select>
-                        <div *ngIf="addLoanForm.controls['lender'].invalid && ( addLoanForm.controls['lender'].dirty || addLoanForm.controls['lender'].touched )" class="alert alert-danger">
+                            <select id="lender" class="form-control form-control-md" formControlName="lender" style="background-color:white;">
+                                <option value="" disabled>Choose one</option>
+                                <option *ngFor="let lender of Lender" [ngValue]="lender">{{lender}}</option>
+                            </select>
+                            <div *ngIf="addLoanForm.controls['lender'].invalid && ( addLoanForm.controls['lender'].dirty || submitted || addLoanForm.controls['lender'].touched)" class="alert alert-danger">
                             <div *ngIf="addLoanForm.controls['lender'].errors.required">
                                 Lender required
                             </div>
-                    </div>
-
+                           
+                            </div>
                     </div>
             <div class="col-sm-4"></div>
-            </div><br>
+            </div>
     <fieldset class="border p-2">
             <legend id="NameCoulum">Name</legend>
             <div class="row">
-                <div class="col-sm-2"></div>
+                <div class="col-sm-2">
+                        <label for="fname" class="float-right">First:<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                </div>
                 <div class="col-sm-2">
                     <div class="form-group">
-                        <label for="fname">First:<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
                         <input type="text"  formControlName="fname" placeholder="Enter First Name" class="form-control" id="fname"  name="fname" required>
-                        <div *ngIf="addLoanForm.controls['fname'].invalid && ( addLoanForm.controls['fname'].dirty || addLoanForm.controls['fname'].touched )" class="alert alert-danger">
+                        <div *ngIf="addLoanForm.controls['fname'].invalid && ( addLoanForm.controls['fname'].dirty || submitted || addLoanForm.controls['fname'].touched )" class="alert alert-danger">
                                 <div *ngIf="addLoanForm.controls['fname'].errors.required">
                                     First Name required
                                 </div>
                         </div>
-
                     </div>
+                </div>
+                <div class="col-sm-1">
+                        <label for="mname" class="float-right">MI/Name:</label>
                 </div>
                 <div class="col-sm-2">
                     <div class="form-group">
-                        <label for="mname">MI/Name:</label>
                         <input type="text" class="form-control" id="mname" name="mname" required>
                     </div>
                 </div>
+                <div class="col-sm-1">
+                        <label for="lname" class="float-right">Last/Suffix:<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                </div>
                 <div class="col-sm-2">
                     <div class="form-group">
-                        <label for="lname">Last/Suffix:<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
                         <input type="text" class="form-control" formControlName="lname" id="lname" placeholder="Enter Last Name" name="lname" required>
-                        <div *ngIf="addLoanForm.controls['lname'].invalid && (addLoanForm.controls['lname'].dirty || addLoanForm.controls['lname'].touched)" class="alert alert-danger">
+                        <div *ngIf="addLoanForm.controls['lname'].invalid && (addLoanForm.controls['lname'].dirty || submitted || addLoanForm.controls['lname'].touched)" class="alert alert-danger">
                             <div *ngIf="addLoanForm.controls['lname'].errors.required">
                                 Last Name required
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-2">
-                    <div class="form-group">
-                        <label for="title">Title:</label>
-                        <input type="text" class="form-control" id="title"  name="title" required>
-                    </div>
-                </div>
-                <div class="col-sm-2"></div>
+               
              </div>
              <div class="row">
-                 <div class="col-sm-2"></div>
+                    <div class="col-sm-2">
+                            <label for="title" class="float-right">Title:</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <input class="float-left" type="text" class="form-control" id="title"  name="title" required>
+                        </div>
+                    </div>
+
+                 <div class="col-sm-1.5">
+                        <label for="ename" align="right">OR Entity Name :<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                 </div>
                <div class="col-sm-2">
                   <div class="form-group">
-                      <label for="ename">OR Entity Name:<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
-                      <input type="text" class="form-control" formControlName="ename" id="ename" name="ename" placeholder="Enter Entity Name" required>
-                      <div *ngIf="addLoanForm.controls['ename'].invalid && (addLoanForm.controls['ename'].dirty || addLoanForm.controls['ename'].touched)" class="alert alert-danger">
+                      <input type="text" class="float-right" class="form-control" formControlName="ename" id="ename" name="ename" placeholder="Enter Entity Name" required>
+                      <div *ngIf="addLoanForm.controls['ename'].invalid && (addLoanForm.controls['ename'].dirty || submitted || addLoanForm.controls['ename'].touched)" class="alert alert-danger">
                         <div *ngIf="addLoanForm.controls['ename'].errors.required">
                             Entity Name required
                         </div>
@@ -94,26 +104,30 @@
     <fieldset class="border p-2">
             <legend id="NameCoulum">Type</legend>
                 <div class="row">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-4">
-                        <label for="taxtype">Tax Type :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                   
+                    <div class="col-sm-2">
+                            <label for="taxtype" class="float-right">Tax Type :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                    </div>
+                    <div class="col-sm-3">
                         <select id="taxtype" class="form-control form-control-md" formControlName="taxtype" style="background-color:white;">
                                 <option value="" disabled>Choose one</option>
                                 <option *ngFor="let taxtype of TaxType" [ngValue]="taxtype">{{taxtype}}</option>
                         </select>
-                        <div *ngIf="addLoanForm.controls['taxtype'].invalid && ( addLoanForm.controls['taxtype'].dirty || addLoanForm.controls['taxtype'].touched )" class="alert alert-danger">
+                        <div *ngIf="addLoanForm.controls['taxtype'].invalid && ( addLoanForm.controls['taxtype'].dirty || submitted || addLoanForm.controls['taxtype'].touched )" class="alert alert-danger">
                             <div *ngIf="addLoanForm.controls['taxtype'].errors.required">
                                 Tax type cannot be blank
                         </div>
                     </div>
                     </div>
-                    <div class="col-sm-4">
-                            <label for="ftin">FTIN :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                    <div class="col-sm-2">
+                            <label for="ftin" class="float-right">FTIN :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                    </div>
+                    <div class="col-sm-3">
                             <select id="ftin" class="form-control form-control-md" formControlName="ftin" style="background-color:white;">
                                 <option value="" disabled>Choose one</option>
                                 <option *ngFor="let ftin of Ftin" [ngValue]="ftin">{{ftin}}</option>
                             </select>
-                            <div *ngIf="addLoanForm.controls['ftin'].invalid && ( addLoanForm.controls['ftin'].dirty || addLoanForm.controls['ftin'].touched )" class="alert alert-danger">
+                            <div *ngIf="addLoanForm.controls['ftin'].invalid && ( addLoanForm.controls['ftin'].dirty || submitted || addLoanForm.controls['ftin'].touched )" class="alert alert-danger">
                                 <div *ngIf="addLoanForm.controls['ftin'].errors.required">
                                     FTIN cannot be blank
                                 </div>
@@ -122,18 +136,22 @@
                     <div class="col-sm-2"></div>
                     </div> <br>
                 <div class="row">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-4">
-                            <label for="relationship">Relationship to Property:<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                    
+                    <div class="col-sm-2">
+                            <label for="relationship"  class="float-right">Relationship to Property :<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                    </div>
+                    <div class="col-sm-3">
                             <input type="text" class="form-control" formControlName="relationship" id="relationship" name="relationship" required>
-                            <div *ngIf="addLoanForm.controls['relationship'].invalid && (addLoanForm.controls['relationship'].dirty || addLoanForm.controls['relationship'].touched)" class="alert alert-danger">
+                            <div *ngIf="addLoanForm.controls['relationship'].invalid && (addLoanForm.controls['relationship'].dirty || submitted || addLoanForm.controls['relationship'].touched)" class="alert alert-danger">
                                 <div *ngIf="addLoanForm.controls['relationship'].errors.required">
                                     Relationship to property is required
                                 </div>
                             </div>
                     </div>
-                    <div class="col-sm-4">
-                            <label for="borrower">Borrower Type :</label>
+                    <div class="col-sm-2">
+                            <label for="borrower" class="float-right">Borrower Type :</label>
+                    </div>
+                    <div class="col-sm-3">
                             <select id="borrower" class="form-control form-control-md" formControlName="borrower" style="background-color:white;">
                                 <option value="" disabled>Choose one</option>
                                 <option *ngFor="let borrower of Borrower" [ngValue]="borrower">{{borrower}}</option>
@@ -145,34 +163,30 @@
                             </div>
                     </div>
                     <div class="col-sm-2"></div>
-                    </div><br>
+                    </div>
     </fieldset>
     <fieldset class="border p-2">
           <legend id="NameCoulum">Phone</legend>
-          <div class="row">
-              <div class="col-sm-2"></div>
-              <div class="col-sm-2">
-                <label for="phonenumber">Phone Number :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
-              </div>
-              <div class="col-sm-2"></div>
-            </div>
                 <div class="row">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-1">
+                            <label for="phonenumber" align="right">Phone Number :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                    </div>
+                    <div class="col-sm-1">
                   <div class="form-group">
-                      <input type="text" class="form-control" id="phonenumber" name="phonenumber" required> 
+                      <input type="text" class="form-control" formControlName="phonenumber" id="phonenumber" name="phonenumber" required> 
                       <div class="valid-feedback">Valid.</div>
                       <div class="invalid-feedback">Please fill out this field.</div>
                   </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-1">
                     <div class="form-group">
                         <input type="text" class="form-control" id="phonenumber" name="phonenumber" required> 
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
                   </div>
-                  <div class="col-sm-2">
+                  <div class="col-sm-1">
                       <div class="form-group">
                           <input type="text" class="form-control" id="phonenumber" name="phonenumber" required> 
                           <div class="valid-feedback">Valid.</div>
@@ -184,23 +198,27 @@
         <fieldset class="border p-2">
             <legend id="NameCoulum">Address</legend>
             <div class="row">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="address1">Address1 :<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-1">
+                        <label for="address1" class="float-right">Address1 :<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group"> 
                         <input type="text" class="form-control" id="address1" formControlName="address1" name="address1" required>
-                        <div *ngIf="addLoanForm.controls['address1'].invalid && (addLoanForm.controls['address1'].dirty || addLoanForm.controls['address1'].touched)" class="alert alert-danger">
+                        <div *ngIf="addLoanForm.controls['address1'].invalid && (addLoanForm.controls['address1'].dirty || submitted || addLoanForm.controls['address1'].touched)" class="alert alert-danger">
                             <div *ngIf="addLoanForm.controls['address1'].errors.required">
                                 Address is required
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-2">
+                        <label for="address2" class="float-right">Address2:<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                </div>
+                <div class="col-sm-3">
                     <div class="form-group">
-                        <label for="address2">Address2:<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
                         <input type="text" class="form-control" formControlName="address2" id="address2" name="address2" required>
-                        <div *ngIf="addLoanForm.controls['address2'].invalid && (addLoanForm.controls['address2'].dirty || addLoanForm.controls['address2'].touched)" class="alert alert-danger">
+                        <div *ngIf="addLoanForm.controls['address2'].invalid && (addLoanForm.controls['address2'].dirty || submitted ||  addLoanForm.controls['address2'].touched)" class="alert alert-danger">
                             <div *ngIf="addLoanForm.controls['address2'].errors.required">
                                 Address is required
                             </div>
@@ -210,26 +228,29 @@
                 <div class="col-sm-2"></div>
                 </div>
                 <div class="row">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-4">
+                <div class="col-sm-2">
+                        <label for="city" class="float-right">City :<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                </div>
+                <div class="col-sm-3">
                     <div class="form-group">
-                        <label for="city">City :<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
                         <input type="text" class="form-control" formControlName="city" id="city" name="city" required>
-                        <div *ngIf="addLoanForm.controls['city'].invalid && (addLoanForm.controls['city'].dirty || addLoanForm.controls['city'].touched)" class="alert alert-danger">
+                        <div *ngIf="addLoanForm.controls['city'].invalid && (addLoanForm.controls['city'].dirty || submitted ||  addLoanForm.controls['city'].touched)" class="alert alert-danger">
                             <div *ngIf="addLoanForm.controls['city'].errors.required">
                                 This field cannot be blank
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-2">
+                        <label for="state" class="float-right">State:<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                </div>
+                <div class="col-sm-3">
                     <div class="form-group">
-                        <label for="state">State:<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
                         <select class="form-control form-control-md" formControlName="state" style="background-color:white">
                             <option value="" disabled>Choose one</option>
                             <option *ngFor="let state of State" [ngValue]="state">{{state}}</option>
                           </select>
-                          <div *ngIf="addLoanForm.controls['state'].invalid && (addLoanForm.controls['state'].dirty || addLoanForm.controls['state'].touched)" class="alert alert-danger">
+                          <div *ngIf="addLoanForm.controls['state'].invalid && (addLoanForm.controls['state'].dirty || submitted || addLoanForm.controls['state'].touched)" class="alert alert-danger">
                             <div *ngIf="addLoanForm.controls['state'].errors.required">
                                 This field cannot be blank
                             </div>
@@ -239,26 +260,30 @@
                 <div class="col-sm-2"></div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-1">
+                            <label for="zip" class="float-right">Zip :<i class="fa fa-asterisk" aria-hidden="true"></i>  </label>
+                    </div>
+                    <div class="col-sm-3">
                         <div class="form-group">
-                            <label for="zip">Zip :<i class="fa fa-asterisk" aria-hidden="true"></i>  </label>
                             <input type="text" class="form-control" formControlName="zip" id="zip" name="zip" required>
-                            <div *ngIf="addLoanForm.controls['zip'].invalid && (addLoanForm.controls['zip'].dirty || addLoanForm.controls['zip'].touched)" class="alert alert-danger">
+                            <div *ngIf="addLoanForm.controls['zip'].invalid && (addLoanForm.controls['zip'].dirty || submitted || addLoanForm.controls['zip'].touched)" class="alert alert-danger">
                                 <div *ngIf="addLoanForm.controls['zip'].errors.required">
                                     This field cannot be blank
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-2">
+                            <label for="county" class="float-right">County :<i class="fa fa-asterisk" aria-hidden="true"></i>  </label>
+                    </div>
+                    <div class="col-sm-3">
                         <div class="form-group">
-                            <label for="county">County :<i class="fa fa-asterisk" aria-hidden="true"></i>  </label>
                             <select class="form-control form-control-md" formControlName="county" style="background-color:white">
                                 <option value="" disabled>Choose one</option>
                                 <option *ngFor="let county of County" [ngValue]="county">{{county}}</option>
                               </select>
-                              <div *ngIf="addLoanForm.controls['county'].invalid && (addLoanForm.controls['county'].dirty || addLoanForm.controls['county'].touched)" class="alert alert-danger">
+                              <div *ngIf="addLoanForm.controls['county'].invalid && (addLoanForm.controls['county'].dirty || submitted || addLoanForm.controls['county'].touched)" class="alert alert-danger">
                                 <div *ngIf="addLoanForm.controls['county'].errors.required">
                                     This field cannot be blank
                                 </div>
@@ -268,29 +293,34 @@
                     <div class="col-sm-2"></div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                                <label for="lDistrict" align="right">Legislative District:<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                        </div>
+                        <div class="col-sm-3">
                             <div class="form-group">
-                                <label for="lDistrict">Legislative District:<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
                                 <select class="form-control form-control-md" formControlName="lDistrict" style="background-color:white">
                                     <option value="" disabled>Choose one</option>
                                     <option *ngFor="let legDistrict of LegislativeDistrict" [ngValue]="legDistrict">{{legDistrict}}</option>
                                   </select>
-                                  <div *ngIf="addLoanForm.controls['lDistrict'].invalid && (addLoanForm.controls['lDistrict'].dirty || addLoanForm.controls['lDistrict'].touched)" class="alert alert-danger">
+                                  <div *ngIf="addLoanForm.controls['lDistrict'].invalid && (addLoanForm.controls['lDistrict'].dirty || submitted || addLoanForm.controls['lDistrict'].touched)" class="alert alert-danger">
                                     <div *ngIf="addLoanForm.controls['lDistrict'].errors.required">
                                         This field cannot be blank
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                                <label for="cDistrict" align="right">Congressional District :<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                        </div>
+                        <div class="col-sm-3">
                             <div class="form-group">
-                                <label for="cDistrict">Congressional District :<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
                                 <select class="form-control form-control-md"  formControlName="cDistrict" style="background-color:white">
                                     <option value="" disabled>Choose one</option>
                                     <option *ngFor="let congDistrict of CongressionalDistrict" [ngValue]="congDistrict">{{congDistrict}}</option>
                                   </select>
-                                  <div *ngIf="addLoanForm.controls['cDistrict'].invalid && (addLoanForm.controls['cDistrict'].dirty || addLoanForm.controls['cDistrict'].touched)" class="alert alert-danger">
+                                  <div *ngIf="addLoanForm.controls['cDistrict'].invalid && (addLoanForm.controls['cDistrict'].dirty || submitted || addLoanForm.controls['cDistrict'].touched)" class="alert alert-danger">
                                     <div *ngIf="addLoanForm.controls['cDistrict'].errors.required">
                                         This field cannot be blank
                                     </div>
@@ -307,7 +337,7 @@
                 <button type="button" class="btn btn-primary btn-block">Cancel</button>
             </div>
             <div class="col-sm-2">
-                <button type="submit" class="btn btn-primary btn-block"> Add  </button>
+                <input type="submit" class="btn btn-primary btn-block"> 
             </div>
             <div class="col-sm-2">
                 <button type="button"  routerLink="/NewLoan/Signer" class="btn btn-primary btn-block"> Go to Step 2 </button>

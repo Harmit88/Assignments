@@ -1,6 +1,6 @@
 .card-body{
-    
-    overflow: visible 
+    margin: 0; 
+height: fit-content;
 }
 
 .card-footer{
@@ -10,5 +10,15 @@
     padding-bottom: 0px;
     width:100%;
     background-color: rgb(18, 100, 167);
+
 }
+.card{
+    height: fit-content;
+    height: 300%;
+    overflow: hidden;
+    /*position: fixed; */
+    width: 100%;
+
+}
+
 

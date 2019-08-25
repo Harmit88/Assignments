@@ -1,5 +1,5 @@
 
-<form>
+<form [formGroup]="ProjectForm" (ngSubmit)="onSubmit()">
     <fieldset class="border p-2" style="background-color:white" id="Header" >
         <legend  id="HeaderContent" class="w-auto" style="background-color:rgb(233, 232, 232) " >
             <span  class="float-left" style="font-size: 20px; color:rgb(18, 100, 167);" >
@@ -104,28 +104,20 @@
                         Name
                     </legend>
                     <div class="row">
-                        <div class="col-sm-2"></div>
+                        <div class="col-sm-2">
+                                <label for="ProjectCategory" class="float-right">Project Category Type:<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                        </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label for="ProjectCategory">Project Category Type:<i class="fa fa-asterisk" aria-hidden="true"></i></label>
-                                <select id="taxtype" class="form-control form-control-md" style="background-color:white;">
-                                    <option>Choose one</option>
-                                    <option>Agriculture</option>
-                                    <option>Alternate Fuel</option>
-                                    <option>Business</option>
-                                    <option>Climate Wise</option>
-                                    <option>Energy Efficient housing </option>
-                                    <option>Energy Star Partner</option>
-                                    <option>Local Government</option>
-                                    <option>Non-Profit</option>
-                                    <option>Rebuild NE </option>
-                                    <option>Residential </option>
-                                    <option>Telecommunications</option>
-                                    <option>Energy Star Certified Equipment</option>
-                                    <option>Wind,Solar & Fuel Cell Systems</option>
-                                    <option>State Government</option>
-                                    <option>Waste Minimization</option>
+                                <select id="ProjectCategory" class="form-control form-control-md"  formControlName="ProjectCategory" style="background-color:white;">
+                                    <option value="" disabled>Choose one</option>
+                                    <option *ngFor="let Prj of ProjectCategory"  [ngValue]="Prj"> {{Prj}}</option>
                                   </select>
+                                  <div *ngIf="this.ProjectForm.controls['ProjectCategory'].invalid && ( this.ProjectForm.controls['ProjectCategory'].dirty || this.ProjectForm.controls['ProjectCategory'].touched)" class="alert alert-danger">
+                                      <div *ngIf="this.ProjectForm.controls['ProjectCategory'].errors.required">
+                                          This filed cannot be blank
+                                      </div>
+                                  </div>
                             </div>
                         </div>
                      </div>
@@ -135,10 +127,13 @@
                             <div class="row">
                                 <div class="col-sm-2"></div>
                                 <div class="col-sm-4">
-                                        <label for="ftin">Legal Description :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
-                                        <input type="text" class="form-control" id="uname" name="uname" required>
-                                        <div class="valid-feedback">Valid.</div>
-                                        <div class="invalid-feedback">Please fill out this field.</div>
+                                        <label for="legalDescription">Legal Description :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                                        <input type="text" class="form-control" id="legalDescription" name="legalDescription" formControlName="legalDescription" required>
+                                        <div *ngIf="this.ProjectForm.controls['legalDescription'].invalid && (this.ProjectForm.controls['legalDescription'].dirty  ||  this.ProjectForm.controls['legalDescription'].touched)" class="alert alert-danger">
+                                             <div *ngIf="this.ProjectForm.controls['legalDescription'].errors.required">
+                                                 this field cannot be blank
+                                             </div>
+                                        </div>
                                 </div>
                               </div> <br>
                               <div class="row">
@@ -150,47 +145,42 @@
                               <div class="row">
                                   <div class="col-sm-2"></div>
                               <div class="col-sm-4">
-                                  <label for="ftin">Address 1 :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
-                                  <input type="text" class="form-control" id="uname" name="uname" required>
-                                  <div class="valid-feedback">Valid.</div>
-                                  <div class="invalid-feedback">Please fill out this field.</div>
+                                  <label for="address1">Address 1 :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                                  <input type="text" class="form-control" id="address1" name="address1"  formControlName="address1" required>
+                                  <div *ngIf="this.ProjectForm.controls['address1'].invalid && ( this.ProjectForm.controls['address1'].dirty || this.ProjectForm.controls['address1'].touched)" class="alert alert-danger">
+                                      <div *ngIf="this.ProjectForm.controls['address1'].errors.required">
+                                          This filed cannot be blank
+                                      </div>
+                                  </div>
                               </div>
                               <div class="col-sm-4">
                                   <label for="ftin">Address 2 :</label>
                                   <input type="text" class="form-control" id="uname" name="uname" required>
-                                  <div class="valid-feedback">Valid.</div>
-                                  <div class="invalid-feedback">Please fill out this field.</div>
                               </div> 
                             </div><br>
                                 <div class="row">
                                         <div class="col-sm-2"></div>
                                         <div class="col-sm-4">
-                                                <label for="ftin">Enter City or RURAL :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
-                                                <input type="text" class="form-control" id="uname" name="uname" required>
-                                                <div class="valid-feedback">Valid.</div>
-                                                <div class="invalid-feedback">Please fill out this field.</div>
+                                                <label for="city">Enter City or RURAL :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                                                <input type="text" class="form-control" id="city" name="city" formControlName="city" required>
+                                                <div *ngIf="this.ProjectForm.controls['city'].invalid && ( this.ProjectForm.controls['city'].dirty || this.ProjectForm.controls['city'].touched )" class="alert alert-danger">
+                                                    <div *ngIf="this.ProjectForm.controls['city'].errors.required">
+                                                        this filed cannot be blank
+                                                    </div>
+                                                </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label for="ProjectCategory">State :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
-                                                <select id="taxtype" class="form-control form-control-md" style="background-color:white;">
-                                                    <option>Choose one</option>
-                                                    <option></option>
-                                                    <option></option>
-                                                    <option></option>
-                                                    <option></option>
-                                                    <option>Energy Efficient housing </option>
-                                                    <option>Energy Star Partner</option>
-                                                    <option>Local Government</option>
-                                                    <option>Non-Profit</option>
-                                                    <option>Rebuild NE </option>
-                                                    <option>Residential </option>
-                                                    <option>Telecommunications</option>
-                                                    <option>Energy Star Certified Equipment</option>
-                                                    <option>Wind,Solar & Fuel Cell Systems</option>
-                                                    <option>State Government</option>
-                                                    <option>Waste Minimization</option>
+                                                <label for="state">State :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                                                <select id="state" class="form-control form-control-md" formControlName="state"  style="background-color:white;">
+                                                    <option value="" disabled>Choose one</option>
+                                                    <option *ngFor="let ST of state" [ngValue]="ST"> {{ST}}</option>
                                                   </select>
+                                                  <div *ngIf="this.ProjectForm.controls['state'].invalid && (this.ProjectForm.controls['state'].dirty || this.ProjectForm.controls['state'].touched)" class="alert alert-danger">
+                                                      <div *ngIf="this.ProjectForm.controls['state'].errors.required">
+                                                          this field cannot be blank
+                                                      </div>
+                                                  </div>
                                             </div>
                                     </div>
                                           <div class="col-sm-2"></div>
@@ -198,23 +188,31 @@
                                     <div class="row">
                                         <div class="col-sm-2"></div>
                                           <div class="col-sm-4">
-                                              <label for="taxno1">Zip :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                                              <label for="zip">Zip :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
 
                                               <div class="input-group">
-                                                  <input type="text" id ="taxno1" class="form-control" />
+                                                  <input type="text" id ="zip" class="form-control"  formControlName="zip" required/>
                                                   <span class="input-group-addon">-</span>
-                                                  <input type="text" class="form-control" />
-                                              </div>
+                                                  <input type="text" class="form-control" formControlName="zip" />
+                                                </div>
+                                                  <div *ngIf="this.ProjectForm.controls['zip'].invalid && (this.ProjectForm.controls['zip'].dirty || this.ProjectForm.controls['zip'].touched)" class="alert alert-danger">
+                                                    <div *ngIf="this.ProjectForm.controls['zip'].errors.required">
+                                                        This field is not required
+                                                    </div>
+                                                  </div>
+                                              
                                             </div>
                                             <div class="col-sm-4">
-                                              <label for="ProjectCategory">County :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
-                                              <select id="taxtype" class="form-control form-control-md" style="background-color:white;">
-                                                  <option>Choose one</option>
-                                                  <option></option>
-                                                  <option></option>
-                                                  <option></option>
-                                                  <option></option>
+                                              <label for="county">County :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                                              <select id="county" class="form-control form-control-md" formControlName="county" style="background-color:white;">
+                                                  <option value="" disabled>Choose one</option>
+                                                  <option *ngFor="let count of county" [ngValue]="count"> {{count}}</option>
                                               </select>
+                                                <div *ngIf="this.ProjectForm.controls['county'].invalid && (this.ProjectForm.controls['county'].dirty || this.ProjectForm.controls['county'].touched)" class="alert alert-danger">
+                                                    <div  *ngIf="this.ProjectForm.controls['county'].errors.required">
+                                                        This field is required
+                                                    </div>
+                                                </div>
 
                                             </div>
                                       </div> <br>
@@ -222,26 +220,30 @@
                                           <div class="col-sm-2"></div>
                                           <div class="col-sm-4">
                                               <div class="form-group">
-                                                  <label for="ProjectCategory">Legislative District :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
-                                                  <select id="taxtype" class="form-control form-control-md" style="background-color:white;">
-                                                      <option>Choose one</option>
-                                                      <option></option>
-                                                      <option></option>
-                                                      <option></option>
-                                                      <option></option>
+                                                  <label for="ldistrict">Legislative District :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                                                  <select id="ldistrict" class="form-control form-control-md" formControlName="ldistrict" style="background-color:white;">
+                                                      <option value="" disabled>Choose one</option>
+                                                      <option *ngFor="let ldist of ldistrict" [ngValue]="ldist">{{ldist}}</option>
                                                   </select>
+                                                  <div *ngIf="this.ProjectForm.controls['ldistrict'].invalid && (this.ProjectForm.controls['ldistrict'].dirty || this.ProjectForm.controls['ldistrict'].touched)" class="alert alert-danger">
+                                                      <div *ngIf="this.ProjectForm.controls['ldistrict'].errors.required">
+                                                          This field is required
+                                                      </div>
+                                                  </div>
                                               </div>
                                           </div>
                                           <div class="col-sm-4">
                                               <div class="form-group">
-                                                  <label for="ProjectCategory">Congressional District :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
-                                                  <select id="taxtype" class="form-control form-control-md" style="background-color:white;">
-                                                      <option>Choose one</option>
-                                                      <option></option>
-                                                      <option></option>
-                                                      <option></option>
-                                                      <option></option>
+                                                  <label for="cdistrict">Congressional District :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                                                  <select id="cdistrict" class="form-control form-control-md" formControlName="cdistrict" style="background-color:white;">
+                                                      <option value="" disabled>Choose one</option>
+                                                      <option *ngFor="let cdist of cdistrict" [ngValue]="cdist">{{cdist}}</option>
                                                   </select>
+                                                  <div *ngIf="this.ProjectForm.controls['cdistrict'].invalid && (this.ProjectForm.controls['cdistrict'].dirty || this.ProjectForm.controls['cdistrict'].touched)" class="alert alert-danger">
+                                                      <div *ngIf="this.ProjectForm.controls['cdistrict'].errors.required">
+                                                          This field is required
+                                                      </div>
+                                                  </div>
                                               </div>
                                           </div>
                                       </div>
@@ -250,22 +252,31 @@
 
                                           </div>
                                           <div class="col-sm-2">
-                                              <label for="ftin">Cost of Improvements :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
-                                              <input type="text" class="form-control" id="uname" name="uname" required>
-                                              <div class="valid-feedback">Valid.</div>
-                                              <div class="invalid-feedback">Please fill out this field.</div>
+                                              <label for="cofimprovement">Cost of Improvements :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                                              <input type="text" class="form-control" formControlName="cofimprovement" id="cofimprovement" name="cofimprovement" required>
+                                              <div *ngIf="this.ProjectForm.controls['cofimprovement'].invalid && (this.ProjectForm.controls['cofimprovement'].dirty || this.ProjectForm.controls['cofimprovement'].touched)" class="alert alert-danger">
+                                                  <div *ngIf="this.ProjectForm.controls['cofimprovement'].errors.required">
+                                                      This field is required
+                                                  </div>
+                                              </div>
                                           </div> 
                                           <div class="col-sm-2">
-                                              <label for="ftin">Eligible for Loan :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
-                                              <input type="text" class="form-control" id="uname" name="uname" required>
-                                              <div class="valid-feedback">Valid.</div>
-                                              <div class="invalid-feedback">Please fill out this field.</div>
+                                              <label for="eligibleForLoan">Eligible for Loan :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                                              <input type="text" class="form-control" id="eligibleForLoan" name="eligibleForLoan"  formControlName="eligibleForLoan" required>
+                                              <div *ngIf="this.ProjectForm.controls['eligibleForLoan'].invalid && (this.ProjectForm.controls['eligibleForLoan'].dirty || this.ProjectForm.controls['eligibleForLoan'].touched)" class="alert alert-danger">
+                                                    <div *ngIf="this.ProjectForm.controls['eligibleForLoan'].errors.required">
+                                                        This field is required
+                                                    </div>
+                                             </div>
                                           </div> 
                                           <div class="col-sm-4">
-                                              <label for="ftin">Lender Loaned Amount for Eligible Portion :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
-                                              <input type="text" class="form-control" id="uname" name="uname" required>
-                                              <div class="valid-feedback">Valid.</div>
-                                              <div class="invalid-feedback">Please fill out this field.</div>
+                                              <label for="lenderloan">Lender Loaned Amount for Eligible Portion :<i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                                              <input type="text" class="form-control" id="lenderloan" name="lenderloan" formControlName="lenderloan" required>
+                                              <div *ngIf="this.ProjectForm.controls['lenderloan'].invalid && (this.ProjectForm.controls['lenderloan'].dirty || this.ProjectForm.controls['lenderloan'].touched)" class="alert alert-danger">
+                                                    <div *ngIf="this.ProjectForm.controls['lenderloan'].errors.required">
+                                                        This field is required
+                                                    </div>
+                                              </div>
                                           </div> 
                                       </div><br>
                                       <div class="row">
